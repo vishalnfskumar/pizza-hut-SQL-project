@@ -1,15 +1,142 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Pizza Hut SQL Project</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pizza-Hut-SQL-Project — View & Download</title>
+  <style>
+    :root{ --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364; --card:#0f1724; --accent:#ff4500; --glass: rgba(255,255,255,0.04); }
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;overflow:hidden}
+    body{color:#e6eef8;display:flex;flex-direction:column;position:relative;z-index:0}
+
+    body::before{
+      content:"";
+      position:fixed;inset:0;z-index:-2;
+      background: linear-gradient(270deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size:600% 600%;
+      animation: gradientShift 18s ease infinite;
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    .particles{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+    .particle{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:0.35;animation: float 20s linear infinite}
+    @keyframes float{from{transform:translateY(100vh) scale(0.6)} to{transform:translateY(-10vh) scale(1.2)}}
+
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;gap:1rem;background:rgba(15,23,36,0.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 0 20px rgba(255,69,0,0.6)}
+    h1{font-size:1.05rem;margin:0}
+    .controls{display:flex;gap:.5rem;align-items:center}
+    .btn{background:var(--accent);color:#052024;padding:.6rem .9rem;border-radius:10px;text-decoration:none;font-weight:600;display:inline-flex;gap:.5rem;align-items:center;transition:all .25s ease}
+    .btn:hover{transform:scale(1.05);box-shadow:0 0 15px rgba(255,69,0,0.6)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#e6eef8}
+    .container{flex:1;display:flex;flex-direction:column;padding:1rem;gap:1rem;overflow:auto}
+    .viewer-wrap{flex:1;min-height:300px;background:rgba(15,23,36,0.75);border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6);display:flex;flex-direction:column;backdrop-filter:blur(12px)}
+    .iframe-box{flex:1;border-radius:8px;overflow:hidden;background:var(--glass);display:flex}
+    iframe{width:100%;height:100%;border:0}
+    .meta{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem}
+    .small{font-size:.92rem;opacity:.9}
+    .actions{display:flex;gap:.5rem}
+    .note{font-size:.85rem;opacity:.85}
+
+    .footer{background:rgba(15,23,36,0.7);padding:1rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:.5rem;align-items:center;backdrop-filter:blur(10px)}
+    .footer a{color:var(--accent);text-decoration:none;font-weight:500}
+    .footer a:hover{text-decoration:underline}
+    .footer .socials{display:flex;gap:1rem;margin-top:.5rem}
+
+    @media (max-width:720px){ .topbar{flex-direction:column;align-items:flex-start} }
+  </style>
 </head>
 <body>
-    <h1>Pizza Hut SQL Project</h1>
-    <p>
-        <a href="pizza-hut-sql-project.pptx" target="_blank">📊 Click here to view the PPT</a>
-    </p>
-    <p>
-        <a href="pizza-hut-sql-project.pdf" target="_blank">📄 Click here to view the PDF</a>
-    </p>
+  <div class="particles">
+    <div class="particle" style="left:10%;animation-duration:18s"></div>
+    <div class="particle" style="left:25%;animation-duration:22s"></div>
+    <div class="particle" style="left:40%;animation-duration:16s"></div>
+    <div class="particle" style="left:60%;animation-duration:25s"></div>
+    <div class="particle" style="left:80%;animation-duration:20s"></div>
+  </div>
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">PH</div>
+      <div>
+        <h1>Pizza-Hut-SQL-Project.pdf & Pizza-Hut-SQL-Project.pptx</h1>
+        <div class="small">Large viewer — preview & download</div>
+      </div>
+    </div>
+    <div class="controls">
+      <a id="downloadBtnPDF" class="btn" href="pizza-hut-sql-project.pdf" download>
+        ⬇️ Download PDF
+      </a>
+      <a id="openRawPDF" class="btn ghost" href="pizza-hut-sql-project.pdf" target="_blank" rel="noopener">Open raw PDF</a>
+      <a id="downloadBtnPPT" class="btn" href="pizza-hut-sql-project.pptx" download>
+        ⬇️ Download PPTX
+      </a>
+      <a id="openRawPPT" class="btn ghost" href="pizza-hut-sql-project.pptx" target="_blank" rel="noopener">Open raw PPTX</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="viewer-wrap">
+      <div class="meta">
+        <div class="note">If the file doesn't render, use the "Open raw" button or enable GitHub Pages for a nicer embed.</div>
+        <div class="actions">
+          <button class="btn" id="fullscreenBtn">⤢ Fullscreen</button>
+        </div>
+      </div>
+      <div class="iframe-box">
+        <iframe id="pdfFrame" src="pizza-hut-sql-project.pdf#view=FitH&toolbar=0" title="Project PDF preview"></iframe>
+      </div>
+    </div>
+    <div style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div class="note">Tip: For GitHub Pages hosting, push <strong>index.html</strong>, <strong>pizza-hut-sql-project.pdf</strong>, and <strong>pizza-hut-sql-project.pptx</strong> to the repository root. The viewer will load the PDF automatically.</div>
+      <div class="small">Hosted copy filenames must match exactly.</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div><strong>Vishal Kumar</strong> — Aspiring Data Analyst</div>
+    <div>Email: <a href="mailto:vishalkumar013@example.com">vishalkumar013@example.com</a></div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/vishal013/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+      <a href="pizza-hut-sql-project.pdf" download>📄 Project PDF</a>
+      <a href="pizza-hut-sql-project.pptx" download>📊 Project PPTX</a>
+    </div>
+  </footer>
+
+  <script>
+    const iframe = document.getElementById('pdfFrame');
+    const fsBtn = document.getElementById('fullscreenBtn');
+    fsBtn.addEventListener('click', async ()=>{
+      try{
+        if(document.fullscreenElement){ await document.exitFullscreen(); return }
+        await iframe.requestFullscreen();
+      }catch(e){ console.warn('Fullscreen not available', e); alert('Fullscreen not supported in this browser for embedded PDFs. Try opening raw file.'); }
+    });
+
+    (async function showFileSize(){
+      try{
+        const urlPDF = 'pizza-hut-sql-project.pdf';
+        const resPDF = await fetch(urlPDF, { method: 'HEAD' });
+        const sizePDF = resPDF.headers.get('content-length');
+        if(sizePDF){
+          const kbPDF = Math.round(sizePDF/1024);
+          document.getElementById('downloadBtnPDF').innerText = `⬇️ Download PDF (${kbPDF} KB)`;
+        }
+
+        const urlPPT = 'pizza-hut-sql-project.pptx';
+        const resPPT = await fetch(urlPPT, { method: 'HEAD' });
+        const sizePPT = resPPT.headers.get('content-length');
+        if(sizePPT){
+          const kbPPT = Math.round(sizePPT/1024);
+          document.getElementById('downloadBtnPPT').innerText = `⬇️ Download PPTX (${kbPPT} KB)`;
+        }
+      }catch(e){ }
+    })();
+  </script>
 </body>
 </html>
